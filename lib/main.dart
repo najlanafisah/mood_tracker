@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freud_app/screens/spalsh/splash_screen.dart';
+import 'package:freud_app/screens/assesment/calculating_assesment_screen.dart';
 
 void main() {
   runApp(const FreudApp());
@@ -16,7 +16,7 @@ class FreudApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SplashScreen(),
+      home: CalculatingAssesmentScreen(),
     );
   }
 }

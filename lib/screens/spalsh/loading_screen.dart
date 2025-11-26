@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:freud_app/screens/spalsh/widgets/animated_circle.dart';
+import 'package:freud_app/widgets/animated_circle.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
@@ -16,9 +16,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
 
-    Timer.periodic(Duration(milliseconds: 30), (timer) {
-      if (progress >= 100) {
+    Timer.periodic(Duration(milliseconds: 25), (timer) {
+      if (progress >= 99) {
         timer.cancel();
+
+        // Navigator.pushReplacement(
+        //   context,
+        //   MaterialPageRoute(builder: (_) => const HomeScreen()),
+        // );
       } else {
         setState(() {
           progress++;
@@ -29,16 +34,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: AnimatedCircle(
-        child: Center(
-          child: Text(
-            '$progress%',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
+    return AnimatedCircle(
+      color: Color(0xFF4F3422),
+      backgroundColor: Color(0xFF64422D),
+      child: Center(
+        child: Text(
+          '$progress%',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
