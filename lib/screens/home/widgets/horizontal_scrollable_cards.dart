@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class HorizontalScrollableCards extends StatefulWidget {
   final List<Widget> cards;
   final double? height;
-  final bool showDots; // optional
+  final bool showDots;
 
   const HorizontalScrollableCards({
     super.key,
     required this.cards,
     this.height,
-    this.showDots = true, // default
+    this.showDots = true,
   });
 
   @override

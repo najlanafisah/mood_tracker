@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freud_app/screens/assesment/mental_health_assesment_score.dart';
 import 'package:freud_app/screens/home/widgets/bottom_nav.dart';
 import 'package:freud_app/screens/home/widgets/floating_button_on_image.dart';
 import 'package:freud_app/screens/home/widgets/header_section.dart';
@@ -56,7 +57,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Color(0xFF9BB167),
                       blurRadius: 8,
                     ),
-                    onPressed: () {}, //TODO: arahin ke result screen assesment
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MentalHealthAssesmentScore(),
+                        ),
+                      );
+                    },
                   ),
                   HorizontalCard(
                     image: 'assets/mood_image.png',
@@ -163,7 +171,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 230,
                 showDots: false,
                 cards: [
-                  MindfulResourcesCard(onPressed: () {}), //TODO: arahin ke article
+                  MindfulResourcesCard(
+                    onPressed: () {},
+                  ), //TODO: arahin ke article
                   MindfulResourcesCard(),
                   MindfulResourcesCard(),
                 ],

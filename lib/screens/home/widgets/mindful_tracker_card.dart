@@ -38,63 +38,66 @@ class MindfulTrackerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
-      child: Card(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        elevation: 0,
-        child: Padding(
-          padding: EdgeInsets.all(14),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(18),
-                      decoration: BoxDecoration(
-                        color: backgroundColor,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: buildIcon(),
-                    ),
-                    SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          title,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF4F3422),
-                          ),
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Card(
+          color: Colors.white,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+          elevation: 0,
+          child: Padding(
+            padding: EdgeInsets.all(14),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(18),
+                        decoration: BoxDecoration(
+                          color: backgroundColor,
+                          borderRadius: BorderRadius.circular(12),
                         ),
-
-                        if (middle != null) ...[SizedBox(height: 6), middle!],
-
-                        if (subtitle != null) ...[
-                          SizedBox(height: 6),
+                        child: buildIcon(),
+                      ),
+                      SizedBox(width: 12),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
                           Text(
-                            subtitle!,
+                            title,
                             style: TextStyle(
-                              color: Color(0xFF85807B),
-                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF4F3422),
                             ),
                           ),
+        
+                          if (middle != null) ...[SizedBox(height: 6), middle!],
+        
+                          if (subtitle != null) ...[
+                            SizedBox(height: 6),
+                            Text(
+                              subtitle!,
+                              style: TextStyle(
+                                color: Color(0xFF85807B),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
                         ],
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-
-              if (trailing != null)
-                Align(alignment: Alignment.center, child: trailing!),
-            ],
+        
+                if (trailing != null)
+                  Align(alignment: Alignment.center, child: trailing!),
+              ],
+            ),
           ),
         ),
       ),

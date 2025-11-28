@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:freud_app/screens/assesment/result_screen.dart';
+import 'package:freud_app/widgets/result_screen.dart';
 import 'package:freud_app/widgets/animated_circle.dart';
 
 class CalculatingAssesmentScreen extends StatefulWidget {

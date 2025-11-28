@@ -15,45 +15,48 @@ class HorizontalCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 160,
-      height: 196,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        boxShadow: [boxShadow],
-        borderRadius: BorderRadius.circular(24)
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.all(8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(icon, color: Colors.white),
-                  SizedBox(width: 8),
-                  Text(
-                    title,
-                    style: GoogleFonts.urbanist(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Colors.white
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 160,
+        height: 196,
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          boxShadow: [boxShadow],
+          borderRadius: BorderRadius.circular(24)
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(icon, color: Colors.white),
+                    SizedBox(width: 8),
+                    Text(
+                      title,
+                      style: GoogleFonts.urbanist(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        color: Colors.white
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 8),
-            Image.asset(
-              image,
-              height: 120,
-              width: 120,
-              fit: BoxFit.cover,
-            ),
-          ],
+              SizedBox(height: 8),
+              Image.asset(
+                image,
+                height: 120,
+                width: 120,
+                fit: BoxFit.cover,
+              ),
+            ],
+          ),
         ),
       ),
     );
