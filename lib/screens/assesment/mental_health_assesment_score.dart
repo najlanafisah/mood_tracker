@@ -18,7 +18,7 @@ class MentalHealthAssesmentScore extends StatelessWidget {
         onComplete: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (c) => HomeScreen()),
+          MaterialPageRoute(builder: (c) => HomeScreen()),  //TODO: nanti arahin ke article
         );
       },
       )
