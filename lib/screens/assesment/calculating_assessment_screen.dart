@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:freud_app/widgets/result_screen.dart';
+import 'package:freud_app/screens/assesment/widgets/outline_button.dart';
+import 'package:freud_app/widgets/result.dart';
 import 'package:freud_app/widgets/animated_circle.dart';
 
 class CalculatingAssesmentScreen extends StatefulWidget {
@@ -25,43 +26,47 @@ class _CalculatingAssesmentScreenState
       Widget targetScreen;
 
       if (finalScore <= 30) {
-        targetScreen = ResultScreen(
+        targetScreen = Result(
           score: finalScore,
           color: Color(0xFFA694F5),
           icon: Icons.sentiment_very_dissatisfied,
           description: "You’re suicidal. Please call hotline or loved ones!",
           suggestionsCount: 225,
           feeling: "Depressive",
-          buttonText: "Call Emergency Contact",
-          iconButton: Icons.phone,
-          onPressed: () {},
           backgroundImage: 'assets/mental-health-assessment3.png',
+          child: OutlineButton(
+            text: "Call Emergency Contact",
+            icon: Icons.phone,
+          onPressed: () {},
+          ),
         );
       } else if (finalScore <= 60) {
-        targetScreen = ResultScreen(
+        targetScreen = Result(
           score: finalScore,
           color: Color(0xFFED7E1C),
           icon: Icons.sentiment_dissatisfied,
           description: "You’re mentally unstable. Consult psychiatrist.",
           suggestionsCount: 16,
           feeling: "Sad",
-          buttonText: "Schedule Appointment",
-          iconButton: Icons.phone,
-          onPressed: () {},
           backgroundImage: 'assets/mental-health-assessment2.png',
+          child: OutlineButton(
+            text: "Schedule Appointment",
+            icon: Icons.phone,
+          ),
         );
       } else {
-        targetScreen = ResultScreen(
+        targetScreen = Result(
           score: finalScore,
           color: Color(0xFF9BB167),
           icon: Icons.sentiment_satisfied_alt,
           description: "You’re mentally healthy. Are you ready?",
           suggestionsCount: 8,
           feeling: "Overjoyed",
-          buttonText: "I’m Ready",
-          iconButton: Icons.redo_rounded,
-          onPressed: () {},
           backgroundImage: 'assets/mental-health-assessment1.png',
+          child: OutlineButton(
+            text: "I’m Ready",
+            icon: Icons.redo_rounded,
+          ),
         );
       }
 

@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
 
-class ResultScreen extends StatelessWidget {
+class Result extends StatelessWidget {
   final int score;
   final Color color;
-  final IconData icon;
-  final IconData iconButton;
+  final IconData? icon;
   final String description;
-  final int suggestionsCount;
-  final String feeling;
-  final String buttonText;
-  final VoidCallback onPressed;
+  final int? suggestionsCount;
+  final String? feeling;
+  final Widget child;
   final String backgroundImage;
 
-  const ResultScreen({
+  const Result({
     super.key,
     required this.score,
     required this.color,
+    this.icon,
     required this.description,
-    required this.suggestionsCount,
-    required this.feeling,
-    required this.buttonText,
-    required this.onPressed,
+    this.suggestionsCount,
+    this.feeling,
+    required this.child,
     required this.backgroundImage,
-    required this.icon,
-    required this.iconButton,
   });
 
   @override
@@ -51,7 +47,7 @@ class ResultScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 30),
-                CircleScore(score: score, mainColor: color),
+                circleScore(score: score, mainColor: color),
                 SizedBox(height: 30),
                 Text(
                   description,
@@ -63,51 +59,39 @@ class ResultScreen extends StatelessWidget {
                     height: 1.3,
                   ),
                 ),
+
                 SizedBox(height: 42),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.lightbulb_outline, color: Colors.white, size: 18),
-                    SizedBox(width: 6),
-                    Text(
-                      "$suggestionsCount AI suggestions",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                    SizedBox(width: 20),
-                    Icon(icon, color: Colors.white, size: 18),
-                    SizedBox(width: 6),
-                    Text(
-                      feeling,
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 42),
-                OutlinedButton(
-                  onPressed: onPressed,
-                  style: OutlinedButton.styleFrom(
-                    side: BorderSide(color: Colors.white, width: 2),
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                  ),
-                  child: Row(
+
+                if (suggestionsCount != null || icon != null || feeling != null)
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        buttonText,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                      if (suggestionsCount != null) ...[
+                        Icon(Icons.lightbulb_outline, color: Colors.white, size: 18),
+                        SizedBox(width: 6),
+                        Text(
+                          "$suggestionsCount AI suggestions",
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
-                      ),
-                      SizedBox(width: 6),
-                      Icon(iconButton, color: Colors.white),
+                      ],
+
+                      if (suggestionsCount != null && icon != null)
+                        SizedBox(width: 20),
+
+                      if (icon != null) ...[
+                        Icon(icon, color: Colors.white, size: 18),
+                        SizedBox(width: 6),
+                      ],
+
+                      if (feeling != null)
+                        Text(
+                          feeling!,
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
                     ],
                   ),
-                ),
+                SizedBox(height: 60),
+                child,
               ],
             ),
           ),
@@ -117,7 +101,7 @@ class ResultScreen extends StatelessWidget {
   }
 }
 
-Widget CircleScore({required int score, required Color mainColor}) {
+Widget circleScore({required int score, required Color mainColor}) {
   return Stack(
     alignment: Alignment.center,
     children: [
